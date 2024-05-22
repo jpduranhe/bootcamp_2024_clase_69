@@ -12,19 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 	
 	
-	//@Bean
-    SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
-		
-		return http
-                .authorizeHttpRequests( 
-                		(authorizeHttpRequests) -> 
-	                		authorizeHttpRequests
-	                        //.requestMatchers("/login-propio").permitAll()
-	                        .anyRequest().permitAll())
-                //.formLogin(login -> login.loginPage("/login-propio").permitAll())
-               // .logout(logout -> logout.permitAll())
-                .build();
-	}
+	
     @Bean
     public NoOpPasswordEncoder passwordEncoder() {
       return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
