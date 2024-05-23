@@ -12,7 +12,21 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 	
 	
-	
+	@Bean
+    SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
+		
+		return http
+                .authorizeHttpRequests( 
+                		(authorizeHttpRequests) -> 
+	                		authorizeHttpRequests
+	                		.requestMatchers("/assets/**").permitAll()
+	                        .anyRequest().authenticated())
+                .formLogin(form-> form
+                        .defaultSuccessUrl("/home")
+                        .permitAll()
+                       )
+                .build();
+	}
     @Bean
     public NoOpPasswordEncoder passwordEncoder() {
       return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
