@@ -67,7 +67,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService  {
 		if(usuario != null) {
 			List<GrantedAuthority> permissions= new ArrayList<>();
 			
-			GrantedAuthority ga= new SimpleGrantedAuthority("ROLE_ADMIN");
+			GrantedAuthority ga= new SimpleGrantedAuthority("ROLE_"+usuario.getRol().name());
 			permissions.add(ga);
 			
 			ServletRequestAttributes attr= (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();

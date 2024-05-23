@@ -8,24 +8,17 @@
 		xmlns:sec="http://www.springframework.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Public</title>
 </head>
 <body>
-	<h1>Bienvenido</h1>
+	<h1>Publico</h1>
 	
-	
-	<p>
-		Nombre del Usuario:	<sec:authentication property="principal.username"/>
-		<br/>
-		<small> Roles:<sec:authentication property="principal.authorities"/></small>
-	</p>
-	
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		Soy Administrador
+	<sec:authorize access="isAuthenticated()">
+		Solo Usuarios Logueados pueden verme
 	</sec:authorize>
 	
-	<sec:authorize access="hasRole('ROLE_USER')">
-		Soy Usuario
+	<sec:authorize access="isAuthenticated() and principal.username=='jtoro@mail.com'">
+		<br/> Solo jtoro@mail.com puede verme
 	</sec:authorize>
 	
 </body>

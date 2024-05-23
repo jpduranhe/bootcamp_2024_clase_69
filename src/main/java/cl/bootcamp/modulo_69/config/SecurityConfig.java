@@ -19,8 +19,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests( 
                 		(authorizeHttpRequests) -> 
 	                		authorizeHttpRequests
-	                		.requestMatchers("/assets/**").permitAll()
-	                        .anyRequest().authenticated())
+	                		.requestMatchers("/public").permitAll()
+	                        .anyRequest().permitAll())
                 .formLogin(form-> form
                         .defaultSuccessUrl("/home")
                         .permitAll()
